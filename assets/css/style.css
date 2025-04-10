@@ -1,0 +1,40 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 1.25em;
+    padding:  1.25em;
+    background-color: #f4f4f4;
+}
+.pregunta {
+    margin-bottom:  1.25em;
+    font-size:  1.25em;
+    font-weight: bold;
+}
+.opciones {
+    margin: 0.625em 0;
+}
+.opcion {
+    margin: 0.313em 0;
+    padding: 0.625em;
+    background-color: #007bff;
+    color: white;
+    border-radius:0.313em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.opcion:hover {
+    background-color: #0056b3;
+}
+.correcta {
+    background-color: #28a745 !important;
+}
+.incorrecta {
+    background-color: #dc3545 !important;
+}
+#resultado {
+    margin-top: 1.25em;
+    font-weight: bold;
+}
+#final {
+    display: none;
+    font-size: 1.5em;
+}
