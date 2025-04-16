@@ -1,5 +1,5 @@
- // Clase base: Pregunta
- class Pregunta {
+// Clase base: Pregunta
+class Pregunta {
     constructor(texto, opciones, respuestaCorrecta) {
         this.texto = texto;
         this.opciones = opciones;
@@ -33,7 +33,6 @@ class PreguntaAdivina extends Pregunta {
     }
 
     mostrarContenido() {
-        // Crear un elemento de imagen
         const imagenElement = document.createElement('img');
         imagenElement.src = this.url;
         imagenElement.alt = "Imagen del jugador";
@@ -73,9 +72,8 @@ class Quizz {
         if (pregunta.esCorrecta(opcion)) {
             this.puntaje++;
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     hayMasPreguntas() {
@@ -95,12 +93,14 @@ quizz.agregarPregunta(new PreguntaVerdaderoFalso("¿Lionel Messi ha ganado un Mu
 quizz.agregarPregunta(new PreguntaAdivina("Adivina el jugador por su imagen", "assets/images/Messi con la copa.jpeg", "Lionel Messi"));
 quizz.agregarPregunta(new PreguntaAbierta("¿Cuál es el club donde juega Neymar?", "Santos"));
 
+// Elementos del DOM
 const preguntaElement = document.getElementById('pregunta');
 const opcionesElement = document.getElementById('opciones');
 const siguientePreguntaButton = document.getElementById('siguiente-pregunta');
 const resultadoElement = document.getElementById('resultado');
 const finalElement = document.getElementById('final');
 
+// Función para mostrar la pregunta actual
 function mostrarPregunta() {
     if (quizz.hayMasPreguntas()) {
         const preguntaActual = quizz.obtenerPreguntaActual();
@@ -111,13 +111,11 @@ function mostrarPregunta() {
             const imagenElement = preguntaActual.mostrarContenido();
             opcionesElement.appendChild(imagenElement);
 
-            // Crear un campo de entrada para la respuesta
             const inputElement = document.createElement('input');
             inputElement.type = 'text';
             inputElement.placeholder = 'Escribe tu respuesta aquí';
             opcionesElement.appendChild(inputElement);
 
-            // Crear un botón para enviar la respuesta
             const enviarButton = document.createElement('button');
             enviarButton.textContent = 'Enviar';
             enviarButton.addEventListener('click', () => {
@@ -129,6 +127,7 @@ function mostrarPregunta() {
             inputElement.type = 'text';
             inputElement.placeholder = 'Escribe tu respuesta aquí';
             opcionesElement.appendChild(inputElement);
+
             const enviarButton = document.createElement('button');
             enviarButton.textContent = 'Enviar';
             enviarButton.addEventListener('click', () => {
@@ -149,22 +148,39 @@ function mostrarPregunta() {
     }
 }
 
+// Función para manejar la selección de una opción
 function seleccionarOpcion(opcion) {
     const preguntaActual = quizz.obtenerPreguntaActual();
     const esCorrecta = quizz.verificarRespuesta(opcion);
+
     if (esCorrecta) {
         resultadoElement.textContent = "¡Respuesta correcta!";
+        resultadoElement.classList.add('correcta');
     } else {
-        resultadoElement.textContent = "Respuesta incorrecta. La respuesta correcta era: " + preguntaActual.respuestaCorrecta;
+        resultadoElement.textContent = `Respuesta incorrecta. La respuesta correcta era: ${preguntaActual.respuestaCorrecta}`;
+        resultadoElement.classList.add('incorrecta');
     }
+
     quizz.preguntaActual++;
     siguientePreguntaButton.style.display = 'block';
 }
 
+// Función para mostrar el resultado final
+function mostrarResultadoFinal() {
+    preguntaElement.textContent = '';
+    opcionesElement.innerHTML = '';
+    resultadoElement.textContent = '';
+    finalElement.style.display = 'block';
+    finalElement.textContent = `¡Juego terminado! Tu puntaje final es: ${quizz.puntaje}/${quizz.preguntas.length}`;
+}
+
+// Evento para pasar a la siguiente pregunta
 siguientePreguntaButton.addEventListener('click', () => {
     resultadoElement.textContent = '';
+    resultadoElement.classList.remove('correcta', 'incorrecta');
     mostrarPregunta();
     siguientePreguntaButton.style.display = 'none';
 });
 
+// Mostrar la primera pregunta al cargar la página
 mostrarPregunta();

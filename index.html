@@ -4,14 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quizz Interactivo de Futbol
-    </title>
-    <link rel="stylesheet" href="/assets/css/style.css" />
+    <title>Quiz Interactivo de Fútbol</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 <body>
     <!-- Contenedor del Quiz -->
-    <h1>Quizz inetractivo de preguntas Fútbol</h1>
-    <section id="quizz-container">
+    <h1>Quiz interactivo de preguntas de Fútbol</h1>
+    <section id="quizz-container" aria-live="polite">
         <div class="pregunta" id="pregunta"></div>
         <div class="opciones" id="opciones"></div>
         <button id="siguiente-pregunta" style="display: none;">Siguiente Pregunta</button>
@@ -19,6 +18,6 @@
     <div id="resultado"></div>
     <div id="final"></div>
 
-    <script src="/assets/js/app.js" type="module"></script>
+    <script src="./assets/js/app.js" type="module"></script>
 </body>
 </html>
