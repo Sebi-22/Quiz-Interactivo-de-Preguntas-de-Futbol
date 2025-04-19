@@ -117,8 +117,7 @@ const preguntasIntermedias = [
 
 const preguntasDificiles = [
     new PreguntaMultiple("¿Quién ganó la Eurocopa 2004?", ["Grecia", "Portugal", "Francia", "Italia"], "Grecia"),
-    new PreguntaVerdaderoFalso("Estudiantes de La Plata nunca perdió una final de Copa Libertadores en su historia."
-, "Falso"),
+    new PreguntaVerdaderoFalso("Estudiantes de La Plata nunca perdió una final de Copa Libertadores en su historia ", "Falso"),
     new PreguntaAdivina("Adivina el jugador por su imagen", "assets/images-videos/Rodriguez.jpg", "Ruso Rodriguez"),
     new PreguntaAbierta("¿¿Quién fue el primer jugador argentino en ganar el Balón de Oro?", "Omar Sivori"),
     new PreguntaMultiple("¿Qué selección quedo tercera en el mundial 1978?", ["Brasil", "Italia", "Alemania", "Francia"], "Brasil")
@@ -137,7 +136,7 @@ const resultadoElement = document.getElementById('resultado');
 const finalElement = document.getElementById('final');
 const registroContainer = document.getElementById('registro-container');
 const loginContainer = document.getElementById('login-container');
-const temporizadorElement = document.getElementById('tiempo');
+const temporizadorElement = document.getElementById('temporizador');
 let temporizador;
 
 // Función para registrar un nuevo usuario
@@ -169,11 +168,14 @@ document.getElementById('iniciar-sesion').addEventListener('click', () => {
 
 // Función para mostrar la pregunta actual
 function mostrarPregunta() {
-    if (quizz.hayMasPreguntas ()) {
+    if (quizz.hayMasPreguntas()) {
         const preguntaActual = quizz.obtenerPreguntaActual();
         preguntaElement.textContent = preguntaActual.texto;
         opcionesElement.innerHTML = '';
         resetearTemporizador();
+
+        // Mostrar el temporizador solo durante las preguntas
+        temporizadorElement.style.display = 'block';
 
         if (preguntaActual instanceof PreguntaAdivina) {
             const imagenElement = preguntaActual.mostrarContenido();
@@ -241,6 +243,21 @@ function mostrarResultadoFinal() {
     resultadoElement.textContent = '';
     finalElement.style.display = 'block';
     finalElement.textContent = `¡Juego terminado! Tu puntaje final es: ${quizz.puntaje}/${quizz.preguntas.length}`;
+
+    // Mostrar medalla según el puntaje
+    let medalla = '';
+    if (quizz.puntaje >= 1 && quizz.puntaje <= 5) {
+        medalla = '🥉 Medalla de Bronce';
+    } else if (quizz.puntaje > 5 && quizz.puntaje <= 10) {
+        medalla = '🥈 Medalla de Plata';
+    } else if (quizz.puntaje > 10) {
+        medalla = '🥇 Medalla de Oro';
+    }
+    
+    finalElement.textContent += ` ${medalla}`;
+
+    // Ocultar el temporizador
+    temporizadorElement.style.display = 'none';
 }
 
 // Función para reiniciar el temporizador
@@ -270,4 +287,4 @@ siguientePreguntaButton.addEventListener('click', () => {
 });
 
 // Mostrar el formulario de registro al cargar la página
-registroContainer.style.display = 'block';
+registroContainer.style.display = 'block'; 
