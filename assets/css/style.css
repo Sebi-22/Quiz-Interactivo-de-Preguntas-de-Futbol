@@ -3,15 +3,16 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
     color: #333;
     line-height: 1.6;
+    background-image: url(/assets/images-videos/206-2063847_3840x2160-artificial-grass-with-white-lines-for-football.jpg);
 }
 
 h1 {
     text-align: center;
-    color: #007bff;
-    margin-bottom: 2em; /* 2em */
+    color: #000000;
+    margin-bottom: 1em; /* 2em */
+    font-size: 2.5em;;
 }
 
 /* Estilos para el contenedor de registro e inicio de sesión */
@@ -26,7 +27,7 @@ h1 {
 
 h2 {
     text-align: center;
-    color: #007bff;
+    color: #000000;
     margin-bottom: 1em; /* 1em */
 }
 
@@ -43,7 +44,7 @@ input[type="text"], input[type="password"] {
 button {
     width: 100%;
     padding: 0.75em; /* 0.75em */
-    background-color: #007bff;
+    background-color: #009013;
     color: white;
     border: none;
     border-radius: 0.25em; /* 0.25em */

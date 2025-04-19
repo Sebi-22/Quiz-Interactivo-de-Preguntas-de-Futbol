@@ -101,8 +101,8 @@ const usuarios = [];
 const quizz = new Quizz();
 const preguntasFaciles = [
     new PreguntaMultiple("¿Quién ganó la Copa del Mundo 2018?", ["Francia", "Brasil", "Alemania", "Argentina"], "Francia"),
-    new PreguntaVerdaderoFalso("¿Lionel Messi ha ganado un Mundial?", "Verdadero"),
-    new PreguntaAdivina("Adivina el jugador por su imagen", "assets/images/Messi con la copa.jpeg", "Lionel Messi"),
+    new PreguntaVerdaderoFalso("¿Carlos Tévez jugó en Boca Juniors, Corinthians, y Juventus?", "Verdadero"),
+    new PreguntaAdivina("Adivina el jugador por su imagen", "assets/images-videos/Messi con la copa.jpeg", "Lionel Messi"),
     new PreguntaAbierta("¿Cuál es el club donde juega Neymar?", "Santos"),
     new PreguntaMultiple("¿Qué país organizó la Copa del Mundo 2014?", ["Brasil", "Alemania", "Sudáfrica", "Francia"], "Brasil")
 ];
@@ -110,17 +110,18 @@ const preguntasFaciles = [
 const preguntasIntermedias = [
     new PreguntaMultiple("¿Quién es el máximo goleador de la historia de la Champions League?", ["Cristiano Ronaldo", "Lionel Messi", "Raúl", "Gerd Müller"], "Cristiano Ronaldo"),
     new PreguntaVerdaderoFalso("¿El fútbol se originó en Inglaterra?", "Verdadero"),
-    new PreguntaAdivina("Adivina el jugador por su imagen", "assets/images/Ronaldo.jpeg", "Cristiano Ronaldo"),
-    new PreguntaAbierta("¿Cuál es el club donde juega Mbappé?", "PSG"),
+    new PreguntaAdivina("Adivina el jugador por su imagen", "assets/images-videos/Riquelme desenfocado.png", "Juan Roman Riquelme"),
+    new PreguntaAbierta("¿Qué selección ganó la Copa del Mundo en 1998 y fue anfitriona del torneo ese mismo año?", "Francia"),
     new PreguntaMultiple("¿Qué jugador tiene más Balones de Oro?", ["Cristiano Ronaldo", "Lionel Messi", "Johan Cruyff", "Zinedine Zidane"], "Lionel Messi")
 ];
 
 const preguntasDificiles = [
     new PreguntaMultiple("¿Quién ganó la Eurocopa 2004?", ["Grecia", "Portugal", "Francia", "Italia"], "Grecia"),
-    new PreguntaVerdaderoFalso("¿Diego Maradona jugó en el Barcelona?", "Verdadero"),
-    new PreguntaAdivina("Adivina el jugador por su imagen", "assets/images/Zidane.jpeg", "Zinedine Zidane"),
-    new PreguntaAbierta("¿Cuál es el club donde juega Lewandowski?", "Barcelona"),
-    new PreguntaMultiple("¿Qué país ganó la Copa América 2019?", ["Brasil", "Argentina", "Chile", "Colombia"], "Brasil")
+    new PreguntaVerdaderoFalso("Estudiantes de La Plata nunca perdió una final de Copa Libertadores en su historia."
+, "Falso"),
+    new PreguntaAdivina("Adivina el jugador por su imagen", "assets/images/Zidane.jpeg", "Ruso Rodriguez"),
+    new PreguntaAbierta("¿¿Quién fue el primer jugador argentino en ganar el Balón de Oro?", "Omar Sivori"),
+    new PreguntaMultiple("¿Qué selección quedo tercera en el mundial 1978?", ["Brasil", "Italia", "Alemania", "Francia"], "Brasil")
 ];
 
 // Agregar preguntas al quizz
