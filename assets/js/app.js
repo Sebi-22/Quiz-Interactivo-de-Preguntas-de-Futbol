@@ -119,7 +119,7 @@ const preguntasDificiles = [
     new PreguntaMultiple("¿Quién ganó la Eurocopa 2004?", ["Grecia", "Portugal", "Francia", "Italia"], "Grecia"),
     new PreguntaVerdaderoFalso("Estudiantes de La Plata nunca perdió una final de Copa Libertadores en su historia."
 , "Falso"),
-    new PreguntaAdivina("Adivina el jugador por su imagen", "assets/images/Zidane.jpeg", "Ruso Rodriguez"),
+    new PreguntaAdivina("Adivina el jugador por su imagen", "assets/images-videos/Rodriguez.jpg", "Ruso Rodriguez"),
     new PreguntaAbierta("¿¿Quién fue el primer jugador argentino en ganar el Balón de Oro?", "Omar Sivori"),
     new PreguntaMultiple("¿Qué selección quedo tercera en el mundial 1978?", ["Brasil", "Italia", "Alemania", "Francia"], "Brasil")
 ];
