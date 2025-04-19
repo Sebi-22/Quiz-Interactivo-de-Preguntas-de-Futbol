@@ -1,7 +1,8 @@
+/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
-    margin: 1.25em;
-    padding: 1.25em;
+    margin: 0;
+    padding: 0;
     background-color: #f4f4f4;
     color: #333;
     line-height: 1.6;
@@ -10,25 +11,78 @@ body {
 h1 {
     text-align: center;
     color: #007bff;
-    margin-bottom: 1.5em;
+    margin-bottom: 2em; /* 2em */
+}
+
+/* Estilos para el contenedor de registro e inicio de sesión */
+#registro-container, #login-container {
+    background-color: white;
+    border-radius: 0.5em; /* 0.5em */
+    box-shadow: 0 0.125em 0.625em rgba(0, 0, 0, 0.1); /* 0.125em y 0.625em */
+    padding: 2em; /* 2em */
+    margin: 2em auto; /* 2em */
+    max-width: 25em; /* 25em */
+}
+
+h2 {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 1em; /* 1em */
+}
+
+/* Estilos para los inputs y botones */
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 0.75em; /* 0.75em */
+    margin: 0.5em 0; /* 0.5em */
+    border: 0.0625em solid #ccc; /* 0.0625em */
+    border-radius: 0.25em; /* 0.25em */
+    font-size: 1em; /* 1em */
+}
+
+button {
+    width: 100%;
+    padding: 0.75em; /* 0.75em */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 0.25em; /* 0.25em */
+    cursor: pointer;
+    font-size: 1em; /* 1em */
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para el contenedor del quiz */
+#quizz-container {
+    background-color: white;
+    border-radius: 0.5em; /* 0.5em */
+    box-shadow: 0 0.125em 0.625em rgba(0, 0, 0, 0.1); /* 0.125em y 0.625em */
+    padding: 2em; /* 2em */
+    margin: 2em auto; /* 2em */
+    max-width: 37.5em; /* 37.5em */
 }
 
 .pregunta {
-    margin-bottom: 1.25em;
-    font-size: 1.25em;
+    margin-bottom: 1.25em; /* 1.25em */
+    font-size: 1.5em; /* 1.5em */
     font-weight: bold;
+    color: #333;
 }
 
 .opciones {
-    margin: 0.625em 0;
+    margin: 0.625em 0; /* 0.625em */
 }
 
 .opcion {
-    margin: 0.313em 0;
-    padding: 0.625em;
+    margin: 0.313em 0; /* 0.313em */
+    padding: 0.625em; /* 0.625em */
     background-color: #007bff;
     color: white;
-    border-radius: 0.313em;
+    border-radius: 0.25em; /* 0.25em */
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
     text-align: center;
@@ -50,34 +104,22 @@ h1 {
 }
 
 #resultado {
-    margin-top: 1.25em;
+    margin-top: 1.25em; /* 1.25em */
     font-weight: bold;
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1.2em; /* 1.2em */
 }
 
 #final {
     display: none;
-    font-size: 1.5em;
+    font-size: 1.5em; /* 1.5em */
     text-align: center;
-    margin-top: 2em;
+    margin-top: 2em; /* 2em */
     color: #007bff;
 }
 
-button {
-    display: block;
-    margin: 1.5em auto;
-    padding: 0.75em 1.5em;
-    font-size: 1em;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 0.313em;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
+#temporizador {
+    font-size: 1.2em; /* 1.2em */
+    text-align: center 
 }
 
-button:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-}

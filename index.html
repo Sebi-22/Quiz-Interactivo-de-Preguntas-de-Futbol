@@ -8,11 +8,29 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 <body>
-    <!-- Contenedor del Quiz -->
     <h1>Quiz interactivo de preguntas de Fútbol</h1>
+
+    <!-- Formulario de Registro -->
+    <div id="registro-container">
+        <h2>Registro</h2>
+        <input type="text" id="usuario-registro" placeholder="Nombre de usuario" />
+        <input type="password" id="contrasena-registro" placeholder="Contraseña" />
+        <button id="registrar">Registrar</button>
+    </div>
+
+    <!-- Formulario de Inicio de Sesión -->
+    <div id="login-container" >
+        <h2>Iniciar Sesión</h2>
+        <input type="text" id="usuario-login" placeholder="Nombre de usuario" />
+        <input type="password" id="contrasena-login" placeholder="Contraseña" />
+        <button id="iniciar-sesion">Iniciar Sesión</button>
+    </div>
+
+    <!-- Contenedor del Quiz -->
     <section id="quizz-container" aria-live="polite">
         <div class="pregunta" id="pregunta"></div>
         <div class="opciones" id="opciones"></div>
+        <div id="temporizador">Tiempo restante: <span id="tiempo">30</span> segundos</div>
         <button id="siguiente-pregunta" style="display: none;">Siguiente Pregunta</button>
     </section>
     <div id="resultado"></div>

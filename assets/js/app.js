@@ -86,12 +86,47 @@ class Quizz {
     }
 }
 
+// Clase para manejar usuarios
+class Usuario {
+    constructor(nombre, contrasena) {
+        this.nombre = nombre;
+        this.contrasena = contrasena;
+    }
+}
+
+// Almacenamiento de usuarios
+const usuarios = [];
+
 // Inicialización del quizz
 const quizz = new Quizz();
-quizz.agregarPregunta(new PreguntaMultiple("¿Quién ganó la Copa del Mundo 2018?", ["Francia", "Brasil", "Alemania", "Argentina"], "Francia"));
-quizz.agregarPregunta(new PreguntaVerdaderoFalso("¿Lionel Messi ha ganado un Mundial?", "Verdadero"));
-quizz.agregarPregunta(new PreguntaAdivina("Adivina el jugador por su imagen", "assets/images/Messi con la copa.jpeg", "Lionel Messi"));
-quizz.agregarPregunta(new PreguntaAbierta("¿Cuál es el club donde juega Neymar?", "Santos"));
+const preguntasFaciles = [
+    new PreguntaMultiple("¿Quién ganó la Copa del Mundo 2018?", ["Francia", "Brasil", "Alemania", "Argentina"], "Francia"),
+    new PreguntaVerdaderoFalso("¿Lionel Messi ha ganado un Mundial?", "Verdadero"),
+    new PreguntaAdivina("Adivina el jugador por su imagen", "assets/images/Messi con la copa.jpeg", "Lionel Messi"),
+    new PreguntaAbierta("¿Cuál es el club donde juega Neymar?", "Santos"),
+    new PreguntaMultiple("¿Qué país organizó la Copa del Mundo 2014?", ["Brasil", "Alemania", "Sudáfrica", "Francia"], "Brasil")
+];
+
+const preguntasIntermedias = [
+    new PreguntaMultiple("¿Quién es el máximo goleador de la historia de la Champions League?", ["Cristiano Ronaldo", "Lionel Messi", "Raúl", "Gerd Müller"], "Cristiano Ronaldo"),
+    new PreguntaVerdaderoFalso("¿El fútbol se originó en Inglaterra?", "Verdadero"),
+    new PreguntaAdivina("Adivina el jugador por su imagen", "assets/images/Ronaldo.jpeg", "Cristiano Ronaldo"),
+    new PreguntaAbierta("¿Cuál es el club donde juega Mbappé?", "PSG"),
+    new PreguntaMultiple("¿Qué jugador tiene más Balones de Oro?", ["Cristiano Ronaldo", "Lionel Messi", "Johan Cruyff", "Zinedine Zidane"], "Lionel Messi")
+];
+
+const preguntasDificiles = [
+    new PreguntaMultiple("¿Quién ganó la Eurocopa 2004?", ["Grecia", "Portugal", "Francia", "Italia"], "Grecia"),
+    new PreguntaVerdaderoFalso("¿Diego Maradona jugó en el Barcelona?", "Verdadero"),
+    new PreguntaAdivina("Adivina el jugador por su imagen", "assets/images/Zidane.jpeg", "Zinedine Zidane"),
+    new PreguntaAbierta("¿Cuál es el club donde juega Lewandowski?", "Barcelona"),
+    new PreguntaMultiple("¿Qué país ganó la Copa América 2019?", ["Brasil", "Argentina", "Chile", "Colombia"], "Brasil")
+];
+
+// Agregar preguntas al quizz
+preguntasFaciles.forEach(pregunta => quizz.agregarPregunta(pregunta));
+preguntasIntermedias.forEach(pregunta => quizz.agregarPregunta(pregunta));
+preguntasDificiles.forEach(pregunta => quizz.agregarPregunta(pregunta));
 
 // Elementos del DOM
 const preguntaElement = document.getElementById('pregunta');
@@ -99,13 +134,45 @@ const opcionesElement = document.getElementById('opciones');
 const siguientePreguntaButton = document.getElementById('siguiente-pregunta');
 const resultadoElement = document.getElementById('resultado');
 const finalElement = document.getElementById('final');
+const registroContainer = document.getElementById('registro-container');
+const loginContainer = document.getElementById('login-container');
+const temporizadorElement = document.getElementById('tiempo');
+let temporizador;
+
+// Función para registrar un nuevo usuario
+document.getElementById('registrar').addEventListener('click', () => {
+    const nombre = document.getElementById('usuario-registro').value;
+    const contrasena = document.getElementById('contrasena-registro').value;
+    const nuevoUsuario = new Usuario(nombre, contrasena);
+    usuarios.push(nuevoUsuario);
+    alert('Usuario registrado con éxito. Ahora puedes iniciar sesión.');
+    registroContainer.style.display = 'none';
+    loginContainer.style.display = 'block';
+});
+
+// Función para iniciar sesión
+document.getElementById('iniciar-sesion').addEventListener('click', () => {
+    const nombre = document.getElementById('usuario-login').value;
+    const contrasena = document.getElementById('contrasena-login').value;
+    const usuarioEncontrado = usuarios.find(usuario => usuario.nombre === nombre && usuario.contrasena === contrasena);
+
+    if (usuarioEncontrado) {
+        alert('Inicio de sesión exitoso. ¡Bienvenido al quiz!');
+        loginContainer.style.display = 'none';
+        document.getElementById('quizz-container').style.display = 'block';
+        mostrarPregunta();
+    } else {
+        alert('Nombre de usuario o contraseña incorrectos. Intenta de nuevo.');
+    }
+});
 
 // Función para mostrar la pregunta actual
 function mostrarPregunta() {
-    if (quizz.hayMasPreguntas()) {
+    if (quizz.hayMasPreguntas ()) {
         const preguntaActual = quizz.obtenerPreguntaActual();
         preguntaElement.textContent = preguntaActual.texto;
         opcionesElement.innerHTML = '';
+        resetearTemporizador();
 
         if (preguntaActual instanceof PreguntaAdivina) {
             const imagenElement = preguntaActual.mostrarContenido();
@@ -150,6 +217,7 @@ function mostrarPregunta() {
 
 // Función para manejar la selección de una opción
 function seleccionarOpcion(opcion) {
+    clearInterval(temporizador);
     const preguntaActual = quizz.obtenerPreguntaActual();
     const esCorrecta = quizz.verificarRespuesta(opcion);
 
@@ -174,6 +242,24 @@ function mostrarResultadoFinal() {
     finalElement.textContent = `¡Juego terminado! Tu puntaje final es: ${quizz.puntaje}/${quizz.preguntas.length}`;
 }
 
+// Función para reiniciar el temporizador
+function resetearTemporizador() {
+    let tiempoRestante = 30;
+    temporizadorElement.textContent = tiempoRestante;
+    clearInterval(temporizador);
+    temporizador = setInterval(() => {
+        tiempoRestante--;
+        temporizadorElement.textContent = tiempoRestante;
+        if (tiempoRestante <= 0) {
+            clearInterval(temporizador);
+            resultadoElement.textContent = `Se acabó el tiempo. La respuesta correcta era: ${quizz.obtenerPreguntaActual().respuestaCorrecta}`;
+            resultadoElement.classList.add('incorrecta');
+            quizz.preguntaActual++;
+            siguientePreguntaButton.style.display = 'block';
+        }
+    }, 1000);
+}
+
 // Evento para pasar a la siguiente pregunta
 siguientePreguntaButton.addEventListener('click', () => {
     resultadoElement.textContent = '';
@@ -182,5 +268,5 @@ siguientePreguntaButton.addEventListener('click', () => {
     siguientePreguntaButton.style.display = 'none';
 });
 
-// Mostrar la primera pregunta al cargar la página
-mostrarPregunta();
+// Mostrar el formulario de registro al cargar la página
+registroContainer.style.display = 'block';
