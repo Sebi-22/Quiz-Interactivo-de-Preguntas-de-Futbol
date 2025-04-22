@@ -10,27 +10,39 @@
 <body>
     <h1>Quiz interactivo de preguntas de Fútbol</h1>
 
-    <!-- Formulario de Registro -->
-    <div id="registro-container">
-        <h2>Registro</h2>
-        <input type="text" id="usuario-registro" placeholder="Nombre de usuario" />
-        <input type="password" id="contrasena-registro" placeholder="Contraseña" />
-        <button id="registrar">Registrar</button>
-    </div>
-
     <!-- Formulario de Inicio de Sesión -->
-    <div id="login-container" >
+    <div id="login-container">
         <h2>Iniciar Sesión</h2>
         <input type="text" id="usuario-login" placeholder="Nombre de usuario" />
         <input type="password" id="contrasena-login" placeholder="Contraseña" />
         <button id="iniciar-sesion">Iniciar Sesión</button>
+        <p>¿No tienes una cuenta? <button id="ir-a-registro">Regístrate aquí</button></p>
+        <p>¿Olvidaste tu contraseña? <button id="recuperar-contrasena">Recuperar aquí</button></p>
+    </div>
+
+    <!-- Formulario de Registro -->
+    <div id="registro-container" style="display: none;">
+        <h2>Registro</h2>
+        <input type="text" id="usuario-registro" placeholder="Nombre de usuario" />
+        <input type="password" id="contrasena-registro" placeholder="Contraseña" />
+        <button id="registrar">Registrar</button>
+        <p>¿Ya tienes una cuenta? <button id="ir-a-login">Inicia sesión aquí</button></p>
+    </div>
+
+    <!-- Contenedor de Recuperación de Contraseña -->
+    <div id="recuperar-contrasena-container" style="display: none;">
+        <h2>Recuperar Contraseña</h2>
+        <input type="text" id="usuario-recuperacion" placeholder="Nombre de usuario" />
+        <button id="enviar-recuperacion">Enviar</button>
+        <button id="ir-a-login-recuperacion">Volver a Iniciar Sesión</button>
     </div>
 
     <!-- Contenedor del Quiz -->
-    <section id="quizz-container" aria-live="polite">
+    <section id="quizz-container" aria-live="polite" style="display: none;">
         <div class="pregunta" id="pregunta"></div>
         <div class="opciones" id="opciones"></div>
         <div id="temporizador">Tiempo restante: <span id="tiempo">30</span> segundos</div>
+        <const alarma = new Audio('assets/images-videos/REFEREE WHISTLE SOUND EFFECT.mp3');></const>
         <button id="siguiente-pregunta" style="display: none;">Siguiente Pregunta</button>
     </section>
     <div id="resultado"></div>

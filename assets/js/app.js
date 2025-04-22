@@ -46,7 +46,7 @@ class PreguntaAbierta extends Pregunta {
         super(texto, [], respuestaCorrecta);
     }
 
-    esCorrecta(respuestaUsuario) {
+    esCorrecta (respuestaUsuario) {
         return this.respuestaCorrecta.toLowerCase() === respuestaUsuario.toLowerCase();
     }
 }
@@ -136,12 +136,13 @@ const resultadoElement = document.getElementById('resultado');
 const finalElement = document.getElementById('final');
 const registroContainer = document.getElementById('registro-container');
 const loginContainer = document.getElementById('login-container');
+const recuperarContainer = document.getElementById('recuperar-contrasena-container');
 const temporizadorElement = document.getElementById('temporizador');
 let temporizador;
 
 // Función para registrar un nuevo usuario
 document.getElementById('registrar').addEventListener('click', () => {
-    const nombre = document.getElementById('usuario-registro').value;
+    const nombre = document.getElementById('usuario-login').value;
     const contrasena = document.getElementById('contrasena-registro').value;
     const nuevoUsuario = new Usuario(nombre, contrasena);
     usuarios.push(nuevoUsuario);
@@ -164,6 +165,44 @@ document.getElementById('iniciar-sesion').addEventListener('click', () => {
     } else {
         alert('Nombre de usuario o contraseña incorrectos. Intenta de nuevo.');
     }
+});
+
+// Evento para ir al formulario de registro
+document.getElementById('ir-a-registro').addEventListener('click', () => {
+    loginContainer.style.display = 'none';
+    registroContainer.style.display = 'block';
+});
+
+// Evento para ir al formulario de inicio de sesión
+document.getElementById('ir-a-login').addEventListener('click', () => {
+    registroContainer.style.display = 'none';
+    loginContainer.style.display = 'block';
+});
+
+// Evento para ir al formulario de recuperación de contraseña
+document.getElementById('recuperar-contrasena').addEventListener('click', () => {
+    loginContainer.style.display = 'none';
+    recuperarContainer.style.display = 'block';
+});
+
+// Función para enviar la solicitud de recuperación de contraseña
+document.getElementById('enviar-recuperacion').addEventListener('click', () => {
+    const nombreUsuario = document.getElementById('usuario-recuperacion').value;
+    const usuarioEncontrado = usuarios.find(usuario => usuario.nombre === nombreUsuario);
+
+    if (usuarioEncontrado) {
+        alert('Se ha enviado un enlace de recuperación a tu correo electrónico.');
+        recuperarContainer.style.display = 'none';
+        loginContainer.style.display = 'block';
+    } else {
+        alert('Usuario no encontrado. Verifica el nombre de usuario.');
+    }
+});
+
+// Evento para volver al inicio de sesión desde la recuperación de contraseña
+document.getElementById('ir-a-login-recuperacion').addEventListener('click', () => {
+    recuperarContainer.style.display = 'none';
+    loginContainer.style.display = 'block';
 });
 
 // Función para mostrar la pregunta actual
@@ -259,8 +298,7 @@ function mostrarResultadoFinal() {
     // Ocultar el temporizador
     temporizadorElement.style.display = 'none';
 }
-
-// Función para reiniciar el temporizador
+const alarma = new Audio('assets/images-videos/REFEREE WHISTLE SOUND EFFECT.mp3');
 function resetearTemporizador() {
     let tiempoRestante = 30;
     temporizadorElement.textContent = tiempoRestante;
@@ -270,6 +308,7 @@ function resetearTemporizador() {
         temporizadorElement.textContent = tiempoRestante;
         if (tiempoRestante <= 0) {
             clearInterval(temporizador);
+            alarma.play(); // Reproduce el sonido de alarma
             resultadoElement.textContent = `Se acabó el tiempo. La respuesta correcta era: ${quizz.obtenerPreguntaActual().respuestaCorrecta}`;
             resultadoElement.classList.add('incorrecta');
             quizz.preguntaActual++;
@@ -286,5 +325,5 @@ siguientePreguntaButton.addEventListener('click', () => {
     siguientePreguntaButton.style.display = 'none';
 });
 
-// Mostrar el formulario de registro al cargar la página
-registroContainer.style.display = 'block'; 
+// Mostrar el formulario de inicio de sesión al cargar la página
+loginContainer.style.display = 'block';
