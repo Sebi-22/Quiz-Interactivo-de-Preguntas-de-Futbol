@@ -6,6 +6,7 @@ body {
     color: #333;
     line-height: 1.6;
     background-image: url(/assets/images-videos/206-2063847_3840x2160-artificial-grass-with-white-lines-for-football.jpg);
+    background-size: cover; /* Asegura que la imagen de fondo cubra toda la pantalla */
 }
 
 h1 {
@@ -23,10 +24,10 @@ h1 {
     padding: 2em;
     margin: 2em auto;
     max-width: 25em;
+    width: 90%; /* Asegura que el contenedor no exceda el 90% del ancho de la pantalla */
 }
 
-h2 ```css
-{
+h2 {
     text-align: center;
     color: #000000;
     margin-bottom: 1em;
@@ -66,6 +67,7 @@ button:hover {
     padding: 2em;
     margin: 2em auto;
     max-width: 37.5em;
+    width: 90%; /* Asegura que el contenedor no exceda el 90% del ancho de la pantalla */
 }
 
 .pregunta {
@@ -124,4 +126,49 @@ button:hover {
 #temporizador {
     font-size: 1.2em;
     text-align: center;
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5em; /* Reduce el tamaño del título en pantallas más pequeñas */
+    }
+
+    #registro-container, #login-container, #crear-contenido-container, #quizz-container {
+        padding: 1.5em; /* Reduce el padding en pantallas más pequeñas */
+    }
+
+    .pregunta {
+        font-size: 1.2em; }
+
+    button {
+        font-size: 0.9em; /* Reduce el tamaño de fuente de los botones */
+    }
+
+    #resultado, #final {
+        font-size: 1em; /* Ajusta el tamaño de fuente para resultados */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2em; /* Tamaño aún más pequeño para dispositivos móviles */
+    }
+
+    #registro-container, #login-container, #crear-contenido-container, #quizz-container {
+        margin: 1em; /* Reduce el margen en dispositivos móviles */
+    }
+
+    .pregunta {
+        font-size: 1.1em; /* Ajusta el tamaño de la pregunta */
+    }
+
+    button {
+        padding: 0.5em; /* Reduce el padding de los botones */
+    }
+
+    #resultado, #final {
+        font-size: 0.9em; /* Ajusta el tamaño de fuente para resultados */
+    }
+
 }
