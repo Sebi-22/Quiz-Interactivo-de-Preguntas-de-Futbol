@@ -46,7 +46,7 @@ class PreguntaAbierta extends Pregunta {
         super(texto, [], respuestaCorrecta);
     }
 
-    esCorrecta (respuestaUsuario) {
+    esCorrecta(respuestaUsuario) {
         return this.respuestaCorrecta.toLowerCase() === respuestaUsuario.toLowerCase();
     }
 }
@@ -70,7 +70,7 @@ class Quizz {
     verificarRespuesta(opcion) {
         const pregunta = this.obtenerPreguntaActual();
         if (pregunta.esCorrecta(opcion)) {
-            this.puntaje++;
+            this .puntaje++;
             return true;
         }
         return false;
@@ -137,12 +137,13 @@ const finalElement = document.getElementById('final');
 const registroContainer = document.getElementById('registro-container');
 const loginContainer = document.getElementById('login-container');
 const recuperarContainer = document.getElementById('recuperar-contrasena-container');
+const crearContenidoContainer = document.getElementById('crear-contenido-container');
 const temporizadorElement = document.getElementById('temporizador');
 let temporizador;
 
 // Función para registrar un nuevo usuario
 document.getElementById('registrar').addEventListener('click', () => {
-    const nombre = document.getElementById('usuario-login').value;
+    const nombre = document.getElementById('usuario-registro').value;
     const contrasena = document.getElementById('contrasena-registro').value;
     const nuevoUsuario = new Usuario(nombre, contrasena);
     usuarios.push(nuevoUsuario);
@@ -153,7 +154,7 @@ document.getElementById('registrar').addEventListener('click', () => {
 
 // Función para iniciar sesión
 document.getElementById('iniciar-sesion').addEventListener('click', () => {
-    const nombre = document.getElementById('usuario-login').value;
+    const nombre = document.getElementById('usuario-login').value 
     const contrasena = document.getElementById('contrasena-login').value;
     const usuarioEncontrado = usuarios.find(usuario => usuario.nombre === nombre && usuario.contrasena === contrasena);
 
@@ -298,7 +299,9 @@ function mostrarResultadoFinal() {
     // Ocultar el temporizador
     temporizadorElement.style.display = 'none';
 }
+
 const alarma = new Audio('assets/images-videos/REFEREE WHISTLE SOUND EFFECT.mp3');
+
 function resetearTemporizador() {
     let tiempoRestante = 30;
     temporizadorElement.textContent = tiempoRestante;
@@ -323,6 +326,33 @@ siguientePreguntaButton.addEventListener('click', () => {
     resultadoElement.classList.remove('correcta', 'incorrecta');
     mostrarPregunta();
     siguientePreguntaButton.style.display = 'none';
+});
+
+// Evento para ir al formulario de crear contenido
+document.getElementById('ir-a-crear-contenido').addEventListener('click', () => {
+    document.getElementById('quizz-container').style.display = 'none';
+    document.getElementById('crear-contenido-container').style.display = 'block';
+});
+
+// Evento para guardar contenido
+document.getElementById('guardar-contenido').addEventListener('click', () => {
+    const titulo = document.getElementById('titulo-contenido').value;
+    const texto = document.getElementById('texto-contenido').value;
+
+    if (titulo && texto) {
+        alert('Contenido guardado con éxito.');
+        // Aquí puedes agregar la lógica para guardar el contenido en una base de datos o en el almacenamiento local
+        document.getElementById('titulo-contenido').value = '';
+        document.getElementById('texto-contenido').value = '';
+    } else {
+        alert('Por favor, completa todos los campos.');
+    }
+});
+
+// Evento para volver al quiz
+document.getElementById('volver-al-quiz').addEventListener('click', () => {
+    document.getElementById('crear-contenido-container').style.display = 'none';
+    document.getElementById('quizz-container').style.display = 'block';
 });
 
 // Mostrar el formulario de inicio de sesión al cargar la página

@@ -42,9 +42,19 @@
         <div class="pregunta" id="pregunta"></div>
         <div class="opciones" id="opciones"></div>
         <div id="temporizador">Tiempo restante: <span id="tiempo">30</span> segundos</div>
-        <const alarma = new Audio('assets/images-videos/REFEREE WHISTLE SOUND EFFECT.mp3');></const>
         <button id="siguiente-pregunta" style="display: none;">Siguiente Pregunta</button>
+        <button id="ir-a-crear-contenido">Crear Contenido</button>
     </section>
+
+    <!-- Contenedor para Crear Contenido -->
+    <div id="crear-contenido-container" style="display: none;">
+        <h2>Crear Contenido</h2>
+        <input type="text" id="titulo-contenido" placeholder="Título del contenido" />
+        <textarea id="texto-contenido" placeholder="Escribe el contenido aquí" rows="5"></textarea>
+        <button id="guardar-contenido">Guardar Contenido</button>
+        <button id="volver-al-quiz">Volver al Quiz</button>
+    </div>
+
     <div id="resultado"></div>
     <div id="final"></div>
 
