@@ -21,7 +21,7 @@
     </div>
 
     <!-- Formulario de Registro -->
-    <div id="registro-container" style="display: none;">
+    <div id="registro-container" >
         <h2>Registro</h2>
         <input type="text" id="usuario-registro" placeholder="Nombre de usuario" />
         <input type="password" id="contrasena-registro" placeholder="Contraseña" />
@@ -30,7 +30,7 @@
     </div>
 
     <!-- Contenedor de Recuperación de Contraseña -->
-    <div id="recuperar-contrasena-container" style="display: none;">
+    <div id="recuperar-contrasena-container" >
         <h2>Recuperar Contraseña</h2>
         <input type="text" id="usuario-recuperacion" placeholder="Nombre de usuario" />
         <button id="enviar-recuperacion">Enviar</button>
@@ -38,22 +38,13 @@
     </div>
 
     <!-- Contenedor del Quiz -->
-    <section id="quizz-container" aria-live="polite" style="display: none;">
+    <section id="quizz-container" aria-live="polite">
         <div class="pregunta" id="pregunta"></div>
         <div class="opciones" id="opciones"></div>
         <div id="temporizador">Tiempo restante: <span id="tiempo">30</span> segundos</div>
-        <button id="siguiente-pregunta" style="display: none;">Siguiente Pregunta</button>
+        <button id="siguiente-pregunta" >Siguiente Pregunta</button>
         <button id="ir-a-crear-contenido">Crear Contenido</button>
     </section>
-
-    <!-- Contenedor para Crear Contenido -->
-    <div id="crear-contenido-container" style="display: none;">
-        <h2>Crear Contenido</h2>
-        <input type="text" id="titulo-contenido" placeholder="Título del contenido" />
-        <textarea id="texto-contenido" placeholder="Escribe el contenido aquí" rows="5"></textarea>
-        <button id="guardar-contenido">Guardar Contenido</button>
-        <button id="volver-al-quiz">Volver al Quiz</button>
-    </div>
 
     <div id="resultado"></div>
     <div id="final"></div>

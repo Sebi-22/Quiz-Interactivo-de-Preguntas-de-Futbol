@@ -117,7 +117,7 @@ const preguntasIntermedias = [
 
 const preguntasDificiles = [
     new PreguntaMultiple("¿Quién ganó la Eurocopa 2004?", ["Grecia", "Portugal", "Francia", "Italia"], "Grecia"),
-    new PreguntaVerdaderoFalso("Estudiantes de La Plata nunca perdió una final de Copa Libertadores en su historia ", "Falso"),
+    new PreguntaVerdaderoFalso("Estudiantes de La Plata nunca perdió una final de Copa Libertadores en su historia ", "Verdadero"),
     new PreguntaAdivina("Adivina el jugador por su imagen", "assets/images-videos/Rodriguez.jpg", "Ruso Rodriguez"),
     new PreguntaAbierta("¿¿Quién fue el primer jugador argentino en ganar el Balón de Oro?", "Omar Sivori"),
     new PreguntaMultiple("¿Qué selección quedo tercera en el mundial 1978?", ["Brasil", "Italia", "Alemania", "Francia"], "Brasil")
@@ -326,27 +326,6 @@ siguientePreguntaButton.addEventListener('click', () => {
     resultadoElement.classList.remove('correcta', 'incorrecta');
     mostrarPregunta();
     siguientePreguntaButton.style.display = 'none';
-});
-
-// Evento para ir al formulario de crear contenido
-document.getElementById('ir-a-crear-contenido').addEventListener('click', () => {
-    document.getElementById('quizz-container').style.display = 'none';
-    document.getElementById('crear-contenido-container').style.display = 'block';
-});
-
-// Evento para guardar contenido
-document.getElementById('guardar-contenido').addEventListener('click', () => {
-    const titulo = document.getElementById('titulo-contenido').value;
-    const texto = document.getElementById('texto-contenido').value;
-
-    if (titulo && texto) {
-        alert('Contenido guardado con éxito.');
-        // Aquí puedes agregar la lógica para guardar el contenido en una base de datos o en el almacenamiento local
-        document.getElementById('titulo-contenido').value = '';
-        document.getElementById('texto-contenido').value = '';
-    } else {
-        alert('Por favor, completa todos los campos.');
-    }
 });
 
 // Evento para volver al quiz
