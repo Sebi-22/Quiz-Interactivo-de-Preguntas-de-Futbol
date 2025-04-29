@@ -1,13 +1,33 @@
 // Clase base: Pregunta
 class Pregunta {
+    #texto;
+    #opciones;
+    #respuestaCorrecta;
+
     constructor(texto, opciones, respuestaCorrecta) {
-        this.texto = texto;
-        this.opciones = opciones;
-        this.respuestaCorrecta = respuestaCorrecta;
+        this.#texto = texto;
+        this.#opciones = opciones;
+        this.#respuestaCorrecta = respuestaCorrecta;
+    }
+
+    get texto() {
+        return this.#texto;
+    }
+
+    get opciones() {
+        return this.#opciones;
+    }
+
+    get respuestaCorrecta() {
+        return this.#respuestaCorrecta;
     }
 
     esCorrecta(opcion) {
-        return this.respuestaCorrecta === opcion;
+        return this.#respuestaCorrecta === opcion;
+    }
+
+    mostrarOpciones() {
+        return this.#opciones;
     }
 }
 
@@ -47,10 +67,9 @@ class PreguntaAbierta extends Pregunta {
     }
 
     esCorrecta(respuestaUsuario) {
-        return this.respuestaCorrecta.toLowerCase() === respuestaUsuario.toLowerCase();
+        return this.respuestaCorrecta.toLowerCase().includes(respuestaUsuario.toLowerCase());
     }
 }
-
 // Clase: Quizz
 class Quizz {
     constructor() {
@@ -112,13 +131,13 @@ const preguntasIntermedias = [
     new PreguntaVerdaderoFalso("¿El fútbol se originó en Inglaterra?", "Verdadero"),
     new PreguntaAdivina("Adivina el jugador por su imagen", "assets/images-videos/Riquelme desenfocado.png", "Juan Roman Riquelme"),
     new PreguntaAbierta("¿Qué selección ganó la Copa del Mundo en 1998 y fue anfitriona del torneo ese mismo año?", "Francia"),
-    new PreguntaMultiple("¿Qué jugador tiene más Balones de Oro?", ["Cristiano Ronaldo", "Lionel Messi", "Johan Cruyff", "Zinedine Zidane"], "Lionel Messi")
+    new PreguntaMultiple("¿Qué jugador tiene más Balones de Oro?", ["Cristiano Ronaldo", "Lionel Messi", "Johan Cruyff", "Z inedine Zidane"], "Lionel Messi")
 ];
 
 const preguntasDificiles = [
     new PreguntaMultiple("¿Quién ganó la Eurocopa 2004?", ["Grecia", "Portugal", "Francia", "Italia"], "Grecia"),
     new PreguntaVerdaderoFalso("Estudiantes de La Plata nunca perdió una final de Copa Libertadores en su historia ", "Verdadero"),
-    new PreguntaAdivina("Adivina el jugador por su imagen", "assets/images-videos/Rodriguez.jpg", " Ruso Rodriguez"),
+    new PreguntaAdivina("Adivina el jugador por su imagen", "assets/images-videos/Rodriguez.jpg", "Ruso Rodriguez"),
     new PreguntaAbierta("¿¿Quién fue el primer jugador argentino en ganar el Balón de Oro?", "Omar Sivori"),
     new PreguntaMultiple("¿Qué selección quedó tercera en el mundial 1978?", ["Brasil", "Italia", "Alemania", "Francia"], "Brasil")
 ];
@@ -144,7 +163,7 @@ let temporizador;
 // Al cargar la página, ocultar los contenedores de registro y recuperación de contraseña
 registroContainer.style.display = 'none';
 recuperarContainer.style.display = 'none';
-quizzContainer.style.display = 'none'; // Ocultar el contenedor del quiz al inicio
+ quizzContainer.style.display = 'none'; // Ocultar el contenedor del quiz al inicio
 temporizadorElement.style.display = 'none'; // Ocultar el temporizador al inicio
 siguientePreguntaButton.style.display = 'none'; // Ocultar el botón de siguiente pregunta al inicio
 
@@ -252,11 +271,11 @@ function mostrarPregunta() {
             });
             opcionesElement.appendChild(enviarButton);
         } else {
-            preguntaActual.opciones.forEach(opcion => {
+            preguntaActual.mostrarOpciones().forEach(opcion => {
                 const opcionElement = document.createElement('div');
                 opcionElement.classList.add('opcion');
                 opcionElement.textContent = opcion;
-                opcionElement.addEventListener('click', () => seleccionarOpcion(opcion));
+                opcionElement .addEventListener('click', () => seleccionarOpcion(opcion));
                 opcionesElement.appendChild(opcionElement);
             });
         }
