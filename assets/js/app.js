@@ -70,7 +70,7 @@ class Quizz {
     verificarRespuesta(opcion) {
         const pregunta = this.obtenerPreguntaActual();
         if (pregunta.esCorrecta(opcion)) {
-            this .puntaje++;
+            this.puntaje++;
             return true;
         }
         return false;
@@ -118,9 +118,9 @@ const preguntasIntermedias = [
 const preguntasDificiles = [
     new PreguntaMultiple("¿Quién ganó la Eurocopa 2004?", ["Grecia", "Portugal", "Francia", "Italia"], "Grecia"),
     new PreguntaVerdaderoFalso("Estudiantes de La Plata nunca perdió una final de Copa Libertadores en su historia ", "Verdadero"),
-    new PreguntaAdivina("Adivina el jugador por su imagen", "assets/images-videos/Rodriguez.jpg", "Ruso Rodriguez"),
+    new PreguntaAdivina("Adivina el jugador por su imagen", "assets/images-videos/Rodriguez.jpg", " Ruso Rodriguez"),
     new PreguntaAbierta("¿¿Quién fue el primer jugador argentino en ganar el Balón de Oro?", "Omar Sivori"),
-    new PreguntaMultiple("¿Qué selección quedo tercera en el mundial 1978?", ["Brasil", "Italia", "Alemania", "Francia"], "Brasil")
+    new PreguntaMultiple("¿Qué selección quedó tercera en el mundial 1978?", ["Brasil", "Italia", "Alemania", "Francia"], "Brasil")
 ];
 
 // Agregar preguntas al quizz
@@ -137,9 +137,16 @@ const finalElement = document.getElementById('final');
 const registroContainer = document.getElementById('registro-container');
 const loginContainer = document.getElementById('login-container');
 const recuperarContainer = document.getElementById('recuperar-contrasena-container');
-const crearContenidoContainer = document.getElementById('crear-contenido-container');
+const quizzContainer = document.getElementById('quizz-container');
 const temporizadorElement = document.getElementById('temporizador');
 let temporizador;
+
+// Al cargar la página, ocultar los contenedores de registro y recuperación de contraseña
+registroContainer.style.display = 'none';
+recuperarContainer.style.display = 'none';
+quizzContainer.style.display = 'none'; // Ocultar el contenedor del quiz al inicio
+temporizadorElement.style.display = 'none'; // Ocultar el temporizador al inicio
+siguientePreguntaButton.style.display = 'none'; // Ocultar el botón de siguiente pregunta al inicio
 
 // Función para registrar un nuevo usuario
 document.getElementById('registrar').addEventListener('click', () => {
@@ -154,14 +161,14 @@ document.getElementById('registrar').addEventListener('click', () => {
 
 // Función para iniciar sesión
 document.getElementById('iniciar-sesion').addEventListener('click', () => {
-    const nombre = document.getElementById('usuario-login').value 
+    const nombre = document.getElementById('usuario-login').value;
     const contrasena = document.getElementById('contrasena-login').value;
     const usuarioEncontrado = usuarios.find(usuario => usuario.nombre === nombre && usuario.contrasena === contrasena);
 
     if (usuarioEncontrado) {
         alert('Inicio de sesión exitoso. ¡Bienvenido al quiz!');
         loginContainer.style.display = 'none';
-        document.getElementById('quizz-container').style.display = 'block';
+        quizzContainer.style.display = 'block'; // Mostrar el contenedor del quiz
         mostrarPregunta();
     } else {
         alert('Nombre de usuario o contraseña incorrectos. Intenta de nuevo.');
@@ -325,13 +332,7 @@ siguientePreguntaButton.addEventListener('click', () => {
     resultadoElement.textContent = '';
     resultadoElement.classList.remove('correcta', 'incorrecta');
     mostrarPregunta();
-    siguientePreguntaButton.style.display = 'none';
-});
-
-// Evento para volver al quiz
-document.getElementById('volver-al-quiz').addEventListener('click', () => {
-    document.getElementById('crear-contenido-container').style.display = 'none';
-    document.getElementById('quizz-container').style.display = 'block';
+    siguientePreguntaButton.style.display = 'none'; // Ocultar el botón de siguiente pregunta
 });
 
 // Mostrar el formulario de inicio de sesión al cargar la página

@@ -32,7 +32,9 @@ h2 {
     color: #000000;
     margin-bottom: 1em;
 }
-
+.hidden {
+    display: none;
+}
 /* Estilos para los inputs y botones */
 input[type="text"], input[type="password"], textarea {
     width: 100%;
