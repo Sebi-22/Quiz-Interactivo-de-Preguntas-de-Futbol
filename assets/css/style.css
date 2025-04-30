@@ -8,6 +8,12 @@ body {
     background-image: url(../images-videos/Fondo1prueba.jpg);
     background-size: cover; /* Asegura que la imagen de fondo cubra toda la pantalla */
 }
+#logo {
+    width: 12%; /* Ajusta según la necesidad */
+    background-color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 4%;
+    margin: 1 auto;
+}
 h1 {
     text-align: center;
     margin-bottom: 4%;
@@ -27,7 +33,7 @@ img{
     margin: 2em auto;
     max-width: 25em;
     width: 90%;
-    margin-top: -8%;
+    margin-top: -15%;
     font-size: 0.8em;
 }
 /* Estilos para los inputs */

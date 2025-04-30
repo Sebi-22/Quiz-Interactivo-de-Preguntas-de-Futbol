@@ -8,21 +8,22 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 <body>
-    <h1>FutQuiz</h1>
+    <!-- Logo principal en lugar del título -->
+    <img src="assets/images-videos/Logo.png" alt="FutQuiz Logo" id="logo" />
 
-   <!-- Formulario de Inicio de Sesión -->
-<div id="login-container">
-    <h2>Iniciar Sesión</h2>
-    <input type="text" id="usuario-login" placeholder="Nombre de usuario" />
-    <input type="password" id="contrasena-login" placeholder="Contraseña" />
-    <div>
-        <input type="checkbox" id="recordarme" />
-        <label for="recordarme">Recordarme</label>
+    <!-- Formulario de Inicio de Sesión -->
+    <div id="login-container">
+        <h2>Iniciar Sesión</h2>
+        <input type="text" id="usuario-login" placeholder="Nombre de usuario" />
+        <input type="password" id="contrasena-login" placeholder="Contraseña" />
+        <div>
+            <input type="checkbox" id="recordarme" />
+            <label for="recordarme">Recordarme</label>
+        </div>
+        <button id="iniciar-sesion">Iniciar Sesión</button>
+        <p>¿No tienes una cuenta? <button id="ir-a-registro">Regístrate aquí</button></p>
+        <p>¿Olvidaste tu contraseña? <button id="recuperar-contrasena">Recuperar aquí</button></p>
     </div>
-    <button id="iniciar-sesion">Iniciar Sesión</button>
-    <p>¿No tienes una cuenta? <button id="ir-a-registro">Regístrate aquí</button></p>
-    <p>¿Olvidaste tu contraseña? <button id="recuperar-contrasena">Recuperar aquí</button></p>
-</div>
 
     <!-- Formulario de Registro -->
     <div id="registro-container">
@@ -72,6 +73,5 @@
 
     <script src="./assets/js/app.js" type="module"></script>
     <script src="./assets/js/admins.js" type="module"></script>
-    
 </body>
 </html>
