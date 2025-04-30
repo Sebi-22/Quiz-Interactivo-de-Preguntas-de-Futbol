@@ -4,21 +4,25 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quiz Interactivo de Fútbol</title>
+    <title>FutQuiz</title>
     <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 <body>
-    <h1>Quiz interactivo de preguntas de Fútbol</h1>
+    <h1>FutQuiz</h1>
 
-    <!-- Formulario de Inicio de Sesión -->
-    <div id="login-container">
-        <h2>Iniciar Sesión</h2>
-        <input type="text" id="usuario-login" placeholder="Nombre de usuario" />
-        <input type="password" id="contrasena-login" placeholder="Contraseña" />
-        <button id="iniciar-sesion">Iniciar Sesión</button>
-        <p>¿No tienes una cuenta? <button id="ir-a-registro">Regístrate aquí</button></p>
-        <p>¿Olvidaste tu contraseña? <button id="recuperar-contrasena">Recuperar aquí</button></p>
+   <!-- Formulario de Inicio de Sesión -->
+<div id="login-container">
+    <h2>Iniciar Sesión</h2>
+    <input type="text" id="usuario-login" placeholder="Nombre de usuario" />
+    <input type="password" id="contrasena-login" placeholder="Contraseña" />
+    <div>
+        <input type="checkbox" id="recordarme" />
+        <label for="recordarme">Recordarme</label>
     </div>
+    <button id="iniciar-sesion">Iniciar Sesión</button>
+    <p>¿No tienes una cuenta? <button id="ir-a-registro">Regístrate aquí</button></p>
+    <p>¿Olvidaste tu contraseña? <button id="recuperar-contrasena">Recuperar aquí</button></p>
+</div>
 
     <!-- Formulario de Registro -->
     <div id="registro-container">
@@ -43,8 +47,25 @@
         <div class="opciones" id="opciones"></div>
         <div id="temporizador">Tiempo restante: <span id="tiempo">30</span> segundos</div>
         <button id="siguiente-pregunta">Siguiente Pregunta</button>
-        <!-- Eliminar el botón de "Crear Contenido" -->
+        <button id="reiniciar-juego">Reiniciar Juego</button> <!-- Botón de reinicio -->
     </section>
+
+    <!-- Tabla de Puntajes -->
+    <div id="tabla-puntajes" class="hidden">
+        <h2>Tabla de Puntajes</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Usuario</th>
+                    <th>Puntaje</th>
+                    <th>Medalla</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpo-tabla-puntajes">
+                <!-- Los puntajes se agregarán aquí dinámicamente -->
+            </tbody>
+        </table>
+    </div>
 
     <div id="resultado"></div>
     <div id="final"></div>

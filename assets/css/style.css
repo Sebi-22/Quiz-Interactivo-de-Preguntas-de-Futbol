@@ -3,37 +3,53 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    color: #333;
     line-height: 1.6;
-    background-image: url(/assets/images-videos/206-2063847_3840x2160-artificial-grass-with-white-lines-for-football.jpg);
+    color: #ffffff;
+    background-image: url(../images-videos/Fondo1prueba.jpg);
     background-size: cover; /* Asegura que la imagen de fondo cubra toda la pantalla */
 }
 
 h1 {
     text-align: center;
-    color: #000000;
     margin-bottom: 4%;
     margin-top: 0;
     font-size: 3em;
 }
 
-/* Estilos para el contenedor de registro e inicio de sesión */
-#registro-container, #login-container, #crear-contenido-container {
-    background-color: white;
+img{
+    width: 70%;
+    margin-left: 15%;
+
+}
+/* Estilos para el contenedor de inicio de sesión */
+#login-container,#registro-container {
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro y semi-transparente */
     border-radius: 0.5em;
-    box-shadow: 0 0.125em 0.625em rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.25em 1em rgba(0, 0, 0, 0.5);
     padding: 2em;
     margin: 2em auto;
     max-width: 25em;
-    width: 90%; /* Asegura que el contenedor no exceda el 90% del ancho de la pantalla */
-}
-#login-container{
-margin-top: -3%;
+    width: 90%;
+    margin-top: -8%;
+    font-size: 0.8em;
 }
 
+/* Estilos para los inputs */
+input[type="text"], input[type="password"] {
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo de input más claro */
+    border: 1px solid #ccc;
+}
+/* Estilo para el checkbox */
+input[type="checkbox"] {
+    margin-right: 0.5em; 
+    cursor: pointer;
+}
+/* Modificación en el botón */
+button {
+    background: linear-gradient(to right, #73717186, #00ccff); /* Botón con degradado */
+}
 h2 {
-    text-align: center;
-    color: #000000;
+    text-align: center; 
     margin-bottom: 1em;
 }
 .hidden {
@@ -43,7 +59,8 @@ h2 {
 input[type="text"], input[type="password"], textarea {
     width: 100%;
     padding: 0.75em;
-    margin: 0.5em 0;
+    margin: 0.5em;
+    margin-left:-2%;
     border: 0.0625em solid #ccc;
     border-radius: 0.25em;
     font-size: 1em;
@@ -60,33 +77,32 @@ button {
     font-size: 1em;
     transition: background-color 0.3s;
 }
-
 button:hover {
     background-color: #0056b3;
 }
-
 /* Estilos para el contenedor del quiz */
 #quizz-container {
-    background-color: white;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro y semi-transparente */
     border-radius: 0.5em;
     box-shadow: 0 0.125em 0.625em rgba(0, 0, 0, 0.1);
-    padding: 2em;
-    margin: 2em auto;
-    max-width: 37.5em;
-    width: 90%; /* Asegura que el contenedor no exceda el 90% del ancho de la pantalla */
-}
+    padding: 1em;
+    margin: 1em auto;
+    margin-top:-5% ;
+    max-width: 38em;
+    width: 50%; /* Asegura que el contenedor no exceda el 90% del ancho de la pantalla */
+    font-size: 0.9em;
 
+}
 .pregunta {
     margin-bottom: 1.25em;
     font-size: 1.5em;
     font-weight: bold;
-    color: #333;
+    color: #ffffff;
+    margin-left: 5%;
 }
-
 .opciones {
     margin: 0.625em 0;
 }
-
 .opcion {
     margin: 0.313em 0;
     padding: 0.625em;
@@ -96,32 +112,27 @@ button:hover {
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
     text-align: center;
+    
 }
-
 .opcion:hover {
     background-color: #0056b3;
     transform: scale(1.05);
 }
-
 .correcta {
     background-color: #28a745 !important;
     color: white;
 }
-
 .incorrecta {
     background-color: #dc3545 !important;
     color: white;
 }
-
 #resultado {
     margin-top: 1.25em;
     font-weight: bold;
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1em;
     color:white;
-    background-color: #000000;
 }
-
 #final {
     display: none;
     font-size: 1.5em;
@@ -134,6 +145,35 @@ button:hover {
 #temporizador {
     font-size: 1.2em;
     text-align: center;
+    color: #ffffff;
+}
+#formQuestion{
+font-size: 0.8em;
+margin-left: 25%;;
+width: 50%;
+}
+/* Estilos para la tabla de puntajes */
+#tabla-puntajes {
+    margin: 1.25em auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 0.5em;
+    padding: 1em;
+    max-width:37.5em;
+    margin-top:-5%;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 0.625em;
+    text-align: center;
+    border: 0.063em solid #ccc;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
 }
 
 /* Media Queries para Responsividad */
@@ -147,7 +187,8 @@ button:hover {
     }
 
     .pregunta {
-        font-size: 1.2em; }
+        font-size: 1.2em; 
+    }
 
     button {
         font-size: 0.9em; /* Reduce el tamaño de fuente de los botones */
@@ -176,7 +217,6 @@ button:hover {
     }
 
     #resultado, #final {
-        font-size: 0.9em; /* Ajusta el tamaño de fuente para resultados */
+    font-size: 0.9em; /* Ajusta el tamaño de fuente para resultados */
     }
-
 }
