@@ -16,6 +16,16 @@
         <input type="text" placeholder="Crear Nueva Pregunta" id="PreguntaNueva" required>
         <input type="text" placeholder="Opciones (separadas por comas)" id="OpcionesNueva" required>
         <input type="text" placeholder="Respuesta Correcta" id="RespuestaCorrecta" required>
+        
+        <label for="TipoContenido">Tipo de Contenido:</label>
+        <select id="TipoContenido" required>
+            <option value="texto">Texto</option>
+            <option value="video">Video</option>
+            <option value="cancion">Canción</option>
+        </select>
+        
+        <input type="text" placeholder="URL del Video o Canción" id="Contenido" required>
+        
         <button type="submit">Agregar Pregunta</button>
     </form>
 

@@ -3,11 +3,15 @@ class Pregunta {
     #texto;
     #opciones;
     #respuestaCorrecta;
+    #tipoContenido; // 'texto', 'video', 'cancion'
+    #contenido; // URL del video o canción
 
-    constructor(texto, opciones, respuestaCorrecta) {
+    constructor(texto, opciones, respuestaCorrecta, tipoContenido, contenido) {
         this.#texto = texto;
         this.#opciones = opciones;
         this.#respuestaCorrecta = respuestaCorrecta;
+        this.#tipoContenido = tipoContenido;
+        this.#contenido = contenido;
     }
 
     get texto() {
@@ -22,12 +26,29 @@ class Pregunta {
         return this.#respuestaCorrecta;
     }
 
+    get tipoContenido() {
+        return this.#tipoContenido;
+    }
+
+    get contenido() {
+        return this.#contenido;
+    }
+
     esCorrecta(opcion) {
         return this.#respuestaCorrecta === opcion;
     }
 
     mostrarOpciones() {
         return this.#opciones;
+    }
+
+    mostrarContenido() {
+        if (this.#tipoContenido === 'video') {
+            return `<iframe width="560" height="315" src="${this.#contenido}" frameborder="0" allowfullscreen></iframe>`;
+        } else if (this.#tipoContenido === 'cancion') {
+            return `<audio src="${this.#contenido}" controls></audio>`;
+        }
+        return '';
     }
 }
 
@@ -61,9 +82,14 @@ document.getElementById('formQuestion').addEventListener('submit', (event) => {
     const preguntaNueva = document.getElementById('PreguntaNueva').value;
     const opcionesNueva = document.getElementById('OpcionesNueva').value.split(',').map(opcion => opcion.trim());
     const respuestaCorrecta = document.getElementById('RespuestaCorrecta').value;
+    const tipoContenido = document.getElementById('TipoContenido').value; // 'texto', 'video', 'cancion'
+    const contenido = document.getElementById('Contenido').value; // URL del video o canción
 
-    const nuevaPregunta = new Pregunta(preguntaNueva, opcionesNueva, respuestaCorrecta);
+    const nuevaPregunta = new Pregunta(preguntaNueva, opcionesNueva, respuestaCorrecta, tipoContenido, contenido);
     admin.agregarPregunta(categoriaNueva, nuevaPregunta);
+
+    // Console log para mostrar la categoría agregada
+    console.log(`Categoría agregada: "${categoriaNueva}" con la pregunta: "${preguntaNueva}"`);
 
     document.getElementById('resultado').textContent = `Pregunta agregada a la categoría "${categoriaNueva}" por ${nombreUsuario}.`;
 

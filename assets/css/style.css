@@ -8,18 +8,15 @@ body {
     background-image: url(../images-videos/Fondo1prueba.jpg);
     background-size: cover; /* Asegura que la imagen de fondo cubra toda la pantalla */
 }
-
 h1 {
     text-align: center;
     margin-bottom: 4%;
     margin-top: 0;
     font-size: 3em;
 }
-
 img{
     width: 70%;
     margin-left: 15%;
-
 }
 /* Estilos para el contenedor de inicio de sesión */
 #login-container,#registro-container {
@@ -33,11 +30,10 @@ img{
     margin-top: -8%;
     font-size: 0.8em;
 }
-
 /* Estilos para los inputs */
 input[type="text"], input[type="password"] {
     background-color: rgba(255, 255, 255, 0.9); /* Fondo de input más claro */
-    border: 1px solid #ccc;
+    border: 0.063em solid #ccc;
 }
 /* Estilo para el checkbox */
 input[type="checkbox"] {
@@ -65,7 +61,6 @@ input[type="text"], input[type="password"], textarea {
     border-radius: 0.25em;
     font-size: 1em;
 }
-
 button {
     width: 100%;
     padding: 0.75em;
