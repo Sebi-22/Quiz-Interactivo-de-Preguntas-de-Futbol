@@ -77,22 +77,36 @@ const admin = new Admin();
 document.getElementById('formQuestion').addEventListener('submit', (event) => {
     event.preventDefault();
 
-    const nombreUsuario = document.getElementById('NombreUsuario').value;
-    const categoriaNueva = document.getElementById('CategoriaNueva').value;
-    const preguntaNueva = document.getElementById('PreguntaNueva').value;
+    const nombreUsuario = document.getElementById('NombreUsuario').value.trim();
+    const categoriaNueva = document.getElementById('CategoriaNueva').value.trim();
+    const preguntaNueva = document.getElementById('PreguntaNueva').value.trim();
     const opcionesNueva = document.getElementById('OpcionesNueva').value.split(',').map(opcion => opcion.trim());
-    const respuestaCorrecta = document.getElementById('RespuestaCorrecta').value;
+    const respuestaCorrecta = document.getElementById('RespuestaCorrecta').value.trim();
     const tipoContenido = document.getElementById('TipoContenido').value; // 'texto', 'video', 'cancion'
-    const contenido = document.getElementById('Contenido').value; // URL del video o canción
+    const contenido = document.getElementById('Contenido').value.trim(); // URL del video o canción
 
-    const nuevaPregunta = new Pregunta(preguntaNueva, opcionesNueva, respuestaCorrecta, tipoContenido, contenido);
-    admin.agregarPregunta(categoriaNueva, nuevaPregunta);
+    // Validaciones
+    if (!nombreUsuario || !categoriaNueva || !preguntaNueva || opcionesNueva.length === 0 || !respuestaCorrecta) {
+        alert('Por favor, completa todos los campos requeridos.');
+        return;
+    }
 
-    // Console log para mostrar la categoría agregada
-    console.log(`Categoría agregada: "${categoriaNueva}" con la pregunta: "${preguntaNueva}"`);
+    if (!opcionesNueva.includes(respuestaCorrecta)) {
+        alert('La respuesta correcta debe estar en la lista de opciones.');
+        return;
+    }
 
-    document.getElementById('resultado').textContent = `Pregunta agregada a la categoría "${categoriaNueva}" por ${nombreUsuario}.`;
+    try {
+        const nuevaPregunta = new Pregunta(preguntaNueva, opcionesNueva, respuestaCorrecta, tipoContenido, contenido);
+        admin.agregarPregunta(categoriaNueva, nuevaPregunta);
 
-    // Limpiar el formulario
-    document.getElementById('formQuestion').reset();
+        console.log(`Categoría agregada: "${categoriaNueva}" con la pregunta: "${preguntaNueva}"`);
+        document.getElementById('resultado').textContent = `Pregunta agregada a la categoría "${categoriaNueva}" por ${nombreUsuario}.`;
+
+        // Limpiar el formulario
+        document.getElementById('formQuestion').reset();
+    } catch (error) {
+        console.error('Error al agregar la pregunta:', error);
+        alert('Ocurrió un error al agregar la pregunta. Por favor, inténtalo de nuevo.');
+    }
 });
