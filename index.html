@@ -11,28 +11,33 @@
     <!-- Logo principal en lugar del título -->
     <img src="assets/images-videos/Logo.png" alt="FutQuiz Logo" id="logo" />
 
-    <!-- Formulario de Inicio de Sesión -->
-    <div id="login-container">
-        <h2>Iniciar Sesión</h2>
-        <input type="text" id="usuario-login" placeholder="Nombre de usuario" />
-        <input type="password" id="contrasena-login" placeholder="Contraseña" />
-        <div>
-            <input type="checkbox" id="recordarme" />
-            <label for="recordarme">Recordarme</label>
-        </div>
-        <button id="iniciar-sesion">Iniciar Sesión</button>
-        <p>¿No tienes una cuenta? <button id="ir-a-registro">Regístrate aquí</button></p>
-        <p>¿Olvidaste tu contraseña? <button id="recuperar-contrasena">Recuperar aquí</button></p>
-        <button onclick="location.href='admin.html'">Agregar preguntas</button>
-
+   <!-- Formulario de Inicio de Sesión -->
+<div id="login-container">
+    <h2>Iniciar Sesión</h2>
+    <input type="text" id="usuario-login" placeholder="Nombre de usuario" />
+    <div>
+        <input type="password" id="contrasena-login" placeholder="Contraseña">
+        <span id="toggle-password-login">👁️</span> <!-- Cambiar ID -->
     </div>
+    <div>
+        <input type="checkbox" id="recordarme" />
+        <label for="recordarme">Recordarme</label>
+    </div>
+    <button id="iniciar-sesion">Iniciar Sesión</button>
+    <p>¿No tienes una cuenta? <button id="ir-a-registro">Regístrate aquí</button></p>
+    <p>¿Olvidaste tu contraseña? <button id="recuperar-contrasena">Recuperar aquí</button></p>
+    <button onclick="location.href='admin.html'">Agregar preguntas</button>
+</div>
 
     <!-- Formulario de Registro -->
     <div id="registro-container">
         <h2>Registro</h2>
         <input type="text" id="usuario-registro" placeholder="Nombre de usuario" />
-        <input type="password" id="contrasena-registro" placeholder="Contraseña" />
-        <button id="registrar">Registrar</button>
+        <div>
+            <input type="password" id="contrasena-registro" placeholder="Contraseña"> <!-- Cambiar ID -->
+            <span id="toggle-password-registro">👁️</span> <!-- Cambiar ID -->
+        </div>     
+         <button id="registrar">Registrar</button>
         <p>¿Ya tienes una cuenta? <button id="ir-a-login">Inicia sesión aquí</button></p>
     </div>
 
